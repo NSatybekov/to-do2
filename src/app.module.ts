@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
-import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import {KnexModule} from 'nest-knexjs'
 import { Knex } from 'knex';
 import { UsersModule } from './users/users.module';
-import { MessageModule } from './message/message.module';
+import { ToDoModule } from './to-do/to-do.module';
+import { SwaggerModule } from '@nestjs/swagger';
 
 @Module({
   imports: [
-    KnexModule.forRoot({
+    KnexModule.forRoot({ // need to refacktor this shit
       config: {
         client: 'pg',
         version: '13',
@@ -24,12 +24,12 @@ import { MessageModule } from './message/message.module';
       }
     }),
     AuthModule, 
-    PrismaModule, 
     UsersModule,
     ConfigModule.forRoot({
       isGlobal: true
     }),
-    MessageModule,
+    ToDoModule,
+    SwaggerModule
   ]
 })
 export class AppModule {}

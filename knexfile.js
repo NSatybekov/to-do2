@@ -14,7 +14,7 @@ module.exports = {
       database: 'nest',
       port: '5434',
     }
-  },
+  }, 
 
   staging: {
     client: 'pg',

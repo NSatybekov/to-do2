@@ -1,9 +1,6 @@
 import { HttpException, HttpStatus, Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { Prisma } from "@prisma/client";
-import { PrismaService } from "src/prisma/prisma.service";
-import { AuthDto } from "./dto";
+import { AuthDto, signInDto } from "./dto";
 import * as argon from 'argon2' //lib to hash password
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
 import { AuthRepository } from './auth.repository';
@@ -32,7 +29,7 @@ export class AuthService{
           }
     }
 
-        async signin(dto: AuthDto) {
+        async signin(dto: signInDto) {
         const email = dto.email
         const user = await this.repository.findUserByEmail(email)
 
@@ -56,7 +53,7 @@ export class AuthService{
         const secret = this.config.get('JWT_SECRET') // need to get it from .env
 
         const token = await this.jwt.signAsync(payload, {
-            expiresIn: '15m',
+            expiresIn: '50m',
             secret: secret
         })
 

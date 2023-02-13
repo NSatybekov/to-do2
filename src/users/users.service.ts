@@ -3,8 +3,6 @@
 import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { Knex } from 'knex';
 import { InjectModel } from 'nest-knexjs';
-import { CreateUserDto} from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/create-user.dto';
 import { UserRepository } from './users.repository';
 import { AuthDto } from 'src/auth/dto';
 
@@ -31,19 +29,5 @@ export class UsersService {
       throw new HttpException(err, HttpStatus.BAD_REQUEST);
     }
   }
-
-
-  // async update(id: number, updateUserDto: UpdateUserDto) {
-  //   try {
-  //     const users = await this.knex.table('users').where('id', id).update({
-  //       firstName: updateUserDto.firstName,
-  //       lastName: updateUserDto.lastName,
-  //     });
-
-  //     return { users };
-  //   } catch (err) {
-  //     throw new HttpException(err, HttpStatus.BAD_REQUEST);
-  //   }
-  // }
 
 }
