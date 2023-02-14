@@ -3,52 +3,20 @@
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
-module.exports = require('knex')( {
-
+module.exports =  {
   development: {
     client: 'pg',
     connection: {
-      host: process.env.DB_HOST || '127.0.0.1',
+      host: process.env.DB_HOST,
       user: 'postgres',
       password: '123',
       database: 'nest',
-      port: '5432',
-    },
-    migrations: {
-      directory: './migrations'
-    }
-  }, 
-
-  staging: {
-    client: 'pg',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: '123'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
+      port: 5434,
     }
   },
-
-  production: {
-    client: 'pg',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
+  migrations: {
+    directory: './migrations'
   }
 
-})
+
+}

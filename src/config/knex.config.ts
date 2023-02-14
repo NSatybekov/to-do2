@@ -6,16 +6,15 @@ export const knexConfig: KnexModuleOptions = {
     config: {
         client: 'pg',
         version: '13',
-        useNullAsDefault: true,
         connection: { 
-          host: process.env.DB_HOST || '127.0.0.1',
+          host: process.env.DB_HOST,
           user: 'postgres', 
           password: '123',
           database: 'nest',
-          port: 5432,
+          port: 5434,
         },
         migrations: {
-            directory: path.resolve(__dirname, `../../migrations`)
+          directory: './migrations'
         }
       }
 }
