@@ -8,6 +8,7 @@ export class AuthController{
 
     @Post('signup')
     signup(@Body() dto: AuthDto) {
+        console.log(process.env.DB_HOST, 'testing')
         return this.authService.signup(dto)
     }
 

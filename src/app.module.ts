@@ -6,23 +6,11 @@ import { Knex } from 'knex';
 import { UsersModule } from './users/users.module';
 import { ToDoModule } from './to-do/to-do.module';
 import { SwaggerModule } from '@nestjs/swagger';
+import { knexConfig} from './config/knex.config'
 
 @Module({
   imports: [
-    KnexModule.forRoot({ // need to refacktor this shit
-      config: {
-        client: 'pg',
-        version: '13',
-        useNullAsDefault: true,
-        connection: { 
-          host: '127.0.0.1',
-          user: 'postgres',
-          password: '123',
-          database: 'nest',
-          port: 5434
-        }
-      }
-    }),
+    KnexModule.forRoot(knexConfig),
     AuthModule, 
     UsersModule,
     ConfigModule.forRoot({

@@ -12,14 +12,14 @@ export class UsersController {
 
 
   @ApiOperation({ summary: 'Get users list' })
-  @UseGuards(JwtGuard)
+  // @UseGuards(JwtGuard)
   @Get()
   findAll() {
     return this.usersService.findAll();
   }
 
   @ApiOperation({ summary: 'Get info about 1 user' })
-  @UseGuards(JwtGuard)
+  // @UseGuards(JwtGuard)
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.usersService.findOne(+id);
